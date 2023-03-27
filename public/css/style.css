@@ -1,0 +1,55 @@
+input {
+    width: 100%;
+    height: 56%;
+    padding: 0 16px;
+    margin: 8px 0;
+    border: 0;
+    border-radius: 8px;
+    outline: none;
+    background: #edeaf7;
+    color: #5a4f79;
+    font-family: "Euclid Circular A";
+    font-size: 16px;
+}
+
+.username {
+    position: relative;
+}
+
+@keyframes spin {
+    100% {
+        rotate: lturn;
+    }
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    translate: 0 -50%;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 3px solid #ccc9cc;
+    border-top-color: #8f44fd;
+    opacity: 0;
+    animation: spin ls infinite linear;
+
+}
+
+.spinner.visible {
+    opacity: 1;
+}
+
+.alert {
+    overflow: hidden;
+    text-align: left;
+    padding: 0 16px;
+    color: #ff3e72;
+    height: 0;
+    transition: 0.3s;
+}
+
+.alert.visible {
+    height: 32px;
+}
