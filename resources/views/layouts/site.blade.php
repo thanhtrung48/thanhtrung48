@@ -324,7 +324,7 @@
 									<div class="productinfo text-center">
 										<img src="images/home/aothun3.jpg" alt="" />
 										<h2>400000</h2>
-										<p>Easy Polo Black Edition</p>
+										<p>Polo</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
