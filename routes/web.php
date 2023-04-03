@@ -14,6 +14,13 @@ Route::get('login', [LoginController::class, 'index'])->name('login.home');
 Route::prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('brand', BrandController::class);
+    //category
     Route::resource('category', CategoryController::class);
-    Route::resource('prodcut', ProductController::class);
+    Route::prefix('admin')->group(function () {
+    Route::get('status/{category}',[CategoryController::class,'status'])->name('category.status');
+    Route::get('delete/{category}',[CategoryController::class,'delete'])->name('category.delete');
+    });
+   
+
+    Route::resource('product', ProductController::class);
 });
