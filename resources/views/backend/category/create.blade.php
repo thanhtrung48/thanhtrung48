@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Thêm danh mục sản phẩm')
 @section('content')
-<form action="{{route('category.store')}}" method="post">
+<form action="{{route('category.store')}}" method="post" enctype="multipart/form-data">
   @csrf
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -43,21 +43,55 @@
         </div>
         <div class="card-body">
           @includeIf('backend.message_alert')
+
          <div class="row">
-          <div class="col-md-9">
-            <div class="mb-3">
-              <label for="name">Tên danh mục</label>
-              <input type="text" name="name" vlaue="{{old('name','')}}" id="name" class="from-control"
-              placeholder="Nhập tên danh mục">
+            <div class="col-md-9">
+              <div class="mb-3">
+                <label for="name">Tên danh mục</label>
+                <input type="text" name="name" vlaue="{{old('name','')}}" id="name" class="from-control"
+                  placeholder="Nhập tên danh mục">
+              </div>
+              <div class="mb-3">
+                <label for="metakey">Từ khóa</label>
+                <textarea name="metakey" id="metakey"class="from-control"
+                placeholder="Từ khóa tìm kiếm">{{old('metakey','')}}</textarea>
+              </div>
+              <div class="mb-3">
+                <label for="metadesc">Mô tả</label>
+                <textarea name="metadesc" id="metadesc"class="from-control"
+                placeholder="Nhập mô tả">{{old('metadesc','')}}</textarea>
+              </div>
             </div>
-            <div class="mb-3">
-              <label for="name">Tên danh mục</label>
-              <input type="text" name="name" vlaue="{{old('name','')}}" id="name" class="from-control"
-              placeholder="Nhập tên danh mục">
+            <div class="col-md-3">
+              <div class="mb-3">
+                <label for="parent_id">Danh mục cha</label>
+                <select name="form-control" id="parent_id" name="parent_id">
+                  <option value="0">--Cấp cha--</option>
+                  {!! $html_parent_id !!}
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="sort_orders">Vị trí sắp xếp</label>
+                <select name="form-control" id="sort_orders" name="sort_oders">
+                  <option value="0">--Vị trí--</option>
+                  {!! $html_sort_orders !!}
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="image">Hình đại diện</label>
+                <input type="file" name="image" vlaue="{{old('image','')}}" id="image" class="from-control"
+                placeholder="nhập ảnh">
+              </div>
+              <div class="mb-3">
+                <label for="status">Trạng thái</label>
+                <select name="form-control" id="status" name="status">
+                  <option value="1">Xuất bản</option>                  
+                  <option value="2">Chưa xuất bản</option>
+                </select>
+              </div>
             </div>
+          </div>
          </div>
-        </div>
-        
         <!-- /.card-body -->
         <div class="card-footer">
         

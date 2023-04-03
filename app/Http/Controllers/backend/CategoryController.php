@@ -5,14 +5,15 @@ namespace App\Http\Controllers\backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
 
     public function index()
     {
-        $list_category = Category::where('status','!=',0)->get();
-        return view('backend.category.index',compact('list_category'));
+        $list_category = Category::where('status', '!=', 0)->get();
+        return view('backend.category.index', compact('list_category'));
     }
 
     /**
@@ -20,16 +21,31 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.category.create');
+        $list_category = Category::where('status', '!=', 0)->get();
+        $html_parent_id = '';
+        $html_sort_orders = '';
+        foreach ($list_category as $item) {
+            $html_parent_id .= '<option value="' . $item->id . '">' . $item->name . '</option>';
+            $html_sort_orders .= '<option value="' . $item->sort_orders . '"> Sau ' . $item->name . '</option>';
+        }
+        return view('backend.category.create', compact('html_parent_id', 'html_sort_orders'));
     }
-    
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category;
+        $category->name = $request->name;
+        $category->slug = Str::slug($category->name = $request->name,'-');
+        $category->metakey = $request->metakey;
+        $category->metadesc = $request->metadesc;
+        $category->parent_id = $request->parent_id;
+        $category->sort_orders= $request->sort_orders;
+        $category->status = $request->status;
+        $category->save();
     }
 
     /**
@@ -39,10 +55,10 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         if ($category == null) {
-            return redirect()->route('category.index')->with('message',['type'=>'danger','msg' 
-            =>'Mẫu tin không tồn tại!']);
-        }else{
-            return view('backend.category.show',compact('category'));
+            return redirect()->route('category.index')->with('message', ['type' => 'danger', 'msg'
+            => 'Mẫu tin không tồn tại!']);
+        } else {
+            return view('backend.category.show', compact('category'));
         }
     }
 
@@ -74,32 +90,32 @@ class CategoryController extends Controller
     public function status($id)
     {
         $category = Category::find($id);
-         if ($category == null) {
-            return redirect()->route('category.index')->with('message',['type'=>'danger','msg' 
-            =>'Mẫu tin không tồn tại!']);
-        }else{
+        if ($category == null) {
+            return redirect()->route('category.index')->with('message', ['type' => 'danger', 'msg'
+            => 'Mẫu tin không tồn tại!']);
+        } else {
             $category->status = ($category->status ==  1) ? 2 : 1;
             $category->updated_by = date('y-m-d H:i:s');
             $category->updated_by = 1;
             $category->save();
-            return redirect()->route('category.index')->with('message',['type'=>'success','msg' 
-            =>'Thay đổi trang thái thành công!']);
+            return redirect()->route('category.index')->with('message', ['type' => 'success', 'msg'
+            => 'Thay đổi trang thái thành công!']);
         }
-     }
-       //GET:admin/category/delete/1
+    }
+    //GET:admin/category/delete/1
     public function delete($id)
     {
         $category = Category::find($id);
-         if ($category == null) {
-            return redirect()->route('category.index')->with('message',['type'=>'danger','msg' 
-            =>'Mẫu tin không tồn tại!']);
-        }else{
+        if ($category == null) {
+            return redirect()->route('category.index')->with('message', ['type' => 'danger', 'msg'
+            => 'Mẫu tin không tồn tại!']);
+        } else {
             $category->status = 0;
             $category->updated_by = date('y-m-d H:i:s');
             $category->updated_by = 1;
             $category->save();
-            return redirect()->route('category.index')->with('message',['type'=>'success','msg' 
-            =>'Xóa vào thùng rác thành công!']);
+            return redirect()->route('category.index')->with('message', ['type' => 'success', 'msg'
+            => 'Xóa vào thùng rác thành công!']);
         }
-     }
+    }
 }
