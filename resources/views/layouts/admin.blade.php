@@ -105,7 +105,7 @@
       </div>
 
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
+      <nav class="mt-3">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
@@ -138,8 +138,6 @@
               </li>
             </ul>
           </li>
-    
-       
           <li class="nav-header">LABELS</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -168,8 +166,8 @@
 
   <!-- Content Wrapper. Contains page content -->
    @yield('content')
+ 
   <!-- /.content-wrapper -->
-
   <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.2.0

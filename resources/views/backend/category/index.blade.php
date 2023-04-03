@@ -12,8 +12,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
+              <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">BẢNG ĐIỀU KHIỂN</a></li>
+              <li class="breadcrumb-item active">TẤT CẢ DANH MỤC</li>
             </ol>
           </div>
         </div>
@@ -48,8 +48,8 @@
               <tr>
                  <th style="width:20px;" class="text-center">#</th>
                  <th>Tên danh mục</th>
-                 <th>Slug</th>
-                 <th style="width:20px;" class="text-center">Ngày đăng</th>
+                 <th style="width:200px;">Slug</th>
+                 <th style="width:200px;" class="text-center">Ngày đăng</th>
                  <th style="width:200px;" class="text-center">Chức năng</th>
                  <th style="width:20px;" class="text-center">ID</th>
               </tr>
