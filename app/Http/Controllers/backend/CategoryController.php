@@ -93,7 +93,7 @@ class CategoryController extends Controller
             => 'Mẫu tin không tồn tại']);
         } else {
             $category->status = ($category->status == 1) ? 2 : 1;
-            $category->updated_at = date('y-m-d H:i:s');
+            $category->updated_at = date('Y-m-d H:i:s');
             $category->updated_by = 1;
             $category->save();
             return redirect()->route('category.index')->with('message', ['type' => 'success', 'msg'
