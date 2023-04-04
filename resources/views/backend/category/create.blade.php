@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Thêm danh mục sản phẩm')
 @section('content')
-<form action="{{route('category.store')}}" method="post" enctype="multipart/form-data">
+  <form action="{{route('category.store')}}" method="post" enctype="multipart/form-data">
   @csrf
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -65,7 +65,7 @@
             <div class="col-md-3">
               <div class="mb-3">
                 <label for="parent_id">Danh mục cha</label>
-                <select name="form-control" id="parent_id" name="parent_id">
+                <select class="form-control" id="parent_id" name="parent_id">
                   <option value="0">--Cấp cha--</option>
                   {!! $html_parent_id !!}
                 </select>
@@ -93,9 +93,7 @@
           </div>
          </div>
         <!-- /.card-body -->
-        <div class="card-footer">
         
-        </div>
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->
@@ -103,5 +101,5 @@
     </section>
     <!-- /.content -->
   </div>
-</form>
+  </form>
 @endsection
