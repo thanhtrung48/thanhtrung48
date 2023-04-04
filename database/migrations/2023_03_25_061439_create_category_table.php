@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 1000);
             $table->string('slug', 1000);
-            $table->unsignedInteger('parentid');
+            $table->unsignedInteger('parent_id');
             $table->unsignedInteger('sort_orders');
             $table->string('image', 1000);
             $table->string('metakey', 255);
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ttt_category');
+        Schema::dropIfExists('db_category');
     }
 };

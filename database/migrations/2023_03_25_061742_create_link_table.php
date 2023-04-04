@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ttt_link');
+        Schema::dropIfExists('db_link');
     }
 };

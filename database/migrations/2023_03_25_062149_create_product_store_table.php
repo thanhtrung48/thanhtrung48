@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ttt_product_store');
+        Schema::dropIfExists('db_product_store');
     }
 };

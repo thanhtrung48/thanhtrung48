@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ttt_product_sale');
+        Schema::dropIfExists('db_product_sale');
     }
 };
