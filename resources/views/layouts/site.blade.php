@@ -25,8 +25,8 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +840000000</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> TTSport48@gmail.com</a></li>
+								<li><a ><i class="fa fa-phone"></i> +840000000</a></li>
+								<li><a ><i class="fa fa-envelope"></i> TTSport48@gmail.com</a></li>
 							</ul>
 						</div>
 					</div>
@@ -34,9 +34,6 @@
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
 								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 							</ul>
 						</div>
@@ -52,14 +49,11 @@
 						<div class="logo pull-left">
 							<a href="index.html"><img src="images/home/logo.jpg" width="50%" height="50%" alt="" /></a>
 						</div>
-						
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
@@ -73,34 +67,16 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-9">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href =""  class="active">Home</a></li>
-								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+								<li><a href ="../public"  class="active">Home</a></li>
+									<li class="dropdown"><a>Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html">Products</a></li>
-										<li><a href="product-details.html">Product Details</a></li> 
-										<li><a href="checkout.html">Checkout</a></li> 
+                                        <li><a href="shop.html">Products</a></li>	
 										<li><a href="cart.html">Cart</a></li> 
 										<li><a href="login.html">Login</a></li> 
                                     </ul>
-                                </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li> 
-								<li><a href="404.html">404</a></li>
-								<li><a href="contact-us.html">Contact</a></li>
+                                </li>                                  
 							</ul>
 						</div>
 					</div>
@@ -129,7 +105,7 @@
 							<div class="item active">
 								<div class="col-sm-6">
 									<h1><span>TT</span>-SHOP</h1>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<p>CHẤT LƯỢNG ĐẶT LÊN HÀNG ĐẦU</p>
 								</div>
 								<div class="col-sm-6">
 									<img src="images/home/giaymizuno.png" style="max-width:400px;max-height:400px;"  class="" alt="" />
@@ -138,7 +114,7 @@
 							<div class="item">
 								<div class="col-sm-6">
 									<h1><span>TT</span>-SHOP</h1>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<p>CHẤT LƯỢNG ĐẶT LÊN HÀNG ĐẦU</p>
 								</div>
 								<div class="col-sm-6">
 									<img src="images/home/aothun1bn.png"  style="max-width:400px;max-height:400px;"  class="" alt=""   />
@@ -148,13 +124,12 @@
 							<div class="item">
 								<div class="col-sm-6">
 									<h1><span>TT</span>-SHOP</h1>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<p>CHẤT LƯỢNG ĐẶT LÊN HÀNG ĐẦU</p>
 								</div>
 								<div class="col-sm-6">
 									<img src="images/home/aokhoacnikebn.png" style="max-width:400px;max-height:400px;"  class="" alt="" />
 								</div>
 							</div>
-							
 						</div>
 						
 						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
@@ -176,7 +151,7 @@
 				<div class="col-sm-2">
 					<div class="left-sidebar">
 						<h2>Category</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+						<div class="panel-group category-products" id="accordian">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">
@@ -237,10 +212,8 @@
 										</h4>
 									</div>
 								</div>
-							</div>
-							
+							</div>							
 						</div><!--/category-products-->
-				
 					</div>
 				</div>
 				
@@ -253,22 +226,16 @@
 										<div class="productinfo text-center">
 											<img src="images/home/aothun2.jpg" alt="" />
 											<h2>240000</h2>
-											<p>Easy Polo Black Edition</p>
+											<p>Áo thun thể thao nike</p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
 												<h2>240000</h2>
-												<p>Easy Polo Black Edition</p>
+												<p>Áo thun thể thao nike</p>
 												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
 										</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
 								</div>
 							</div>
 						</div>
@@ -278,22 +245,16 @@
 									<div class="productinfo text-center">
 										<img src="images/home/aothun3.jpg" alt="" />
 										<h2>400000</h2>
-										<p>Polo</p>
+										<p>Áo thun thể thao nike</p>
 										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>400000</h2>
-											<p>Easy Polo Black Edition</p>
+											<p>Áo thun thể thao nike</p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
 								</div>
 							</div>
 						</div>
@@ -315,12 +276,6 @@
 									</div>
 									<img src="images/home/new.png" class="new" alt="" />
 								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
@@ -340,12 +295,6 @@
 										</div>
 									</div>
 									<img src="images/home/new.png" class="new" alt="" />
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
 								</div>
 							</div>
 						</div>
@@ -368,12 +317,6 @@
 									</div>
 									<img src="images/home/sale.png" class="new" alt="" />
 								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-									</ul>
-								</div>
 							</div>
 						</div>
 				
@@ -383,11 +326,11 @@
 					<div class="category-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li class="active"><a href="#tshirt" data-toggle="tab">Sale</a></li>
+								<li class="active"><a data-toggle="tab">Sale</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
-							<div class="tab-pane fade active in" id="tshirt" >
+							<div class="tab-pane fade active in" id="sale" >
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
@@ -437,10 +380,10 @@
 		<div class="footer-top">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-2">
+					<div class="col-sm-3">
 						<div class="companyinfo">
 							<h2><span>TT</span>-shopp</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,sed do eiusmod tempor</p>
+							<p>CHẤT LƯỢNG ĐẶT LÊN HÀNG ĐẦU</p>
 						</div>
 					</div>
 				</div>
@@ -504,7 +447,6 @@
 							<form action="#" class="searchform">
 								<input type="text" placeholder="Your email address" />
 								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
-								<p>Get the most recent updates from <br />our site and be updated your self...</p>
 							</form>
 						</div>
 					</div>
@@ -515,9 +457,8 @@
 		
 		<div class="footer-bottom">
 			<div class="container">
-				<div class="row">
-					<p class="pull-left"></p>
-					<p class="pull-right">Thiết kế bởi : Tạ Thanh Trung <span></span></p>
+				<div class="text-center">
+					<p class="text-center">Thiết kế bởi : Tạ Thanh Trung <span></span></p>
 				</div>
 			</div>
 		</div>
