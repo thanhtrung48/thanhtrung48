@@ -6,14 +6,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\category;
+use App\Models\link;
 
 class CategoryController extends Controller
 {
 
     public function index()
     {
-        $list_category = Category::where('status', '!=', 0)->get();
-        return view('backend.category.index',compact('list_category'));
+        $list_category = Category::where('status', '!=', 0)->orderBy('created_at','desc') ->get();
+        return view('backend.category.index', compact('list_category'));
     }
 
     /**
@@ -44,7 +45,21 @@ class CategoryController extends Controller
         $category->parent_id = $request->parent_id;
         $category->sort_orders = $request->sort_orders;
         $category->status = $request->status;
-        $category->save();
+        $category->created_at = date('Y-m-d H:i:s');
+        $category->created_by = 1;
+        if ($category->save()) {
+            $link = new link();
+            $link->slug = $category->slug;
+            $link->table_id = $category->id;
+            $link->type = 'category';
+            $link->save();
+            return redirect()->route('category.index')->with('message', ['type' => 'success', 'msg'
+            => 'Thêm mẫu tin thành công!']);
+        }
+        else{
+            return redirect()->route('category.index')->with('message', ['type' => 'danger', 'msg'
+            => 'Thêm mẫu tin thất bại!']);
+        }
     }
 
     /**
@@ -56,8 +71,8 @@ class CategoryController extends Controller
         if ($category == null) {
             return Redirect()->route('category.index')->with('message', ['type' => 'danger', 'msg'
             => 'Mẫu tin không tồn tại']);
-        } else{
-            return view('backend.category.show',compact('category'));
+        } else {
+            return view('backend.category.show', compact('category'));
         }
     }
 
@@ -89,7 +104,7 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         if ($category == null) {
-            return Redirect()->route('category.index')->with('message', ['type' => 'danger', 'msg'
+            return redirect()->route('category.index')->with('message', ['type' => 'danger', 'msg'
             => 'Mẫu tin không tồn tại']);
         } else {
             $category->status = ($category->status == 1) ? 2 : 1;
