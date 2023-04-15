@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 1000);
             $table->string('slug', 1000);
-            $table->string('img', 1000);
+            $table->string('image', 1000);
             $table->unsignedInteger('sort_order');
             $table->string('metakey', 255);
             $table->string('metadesc', 255);
