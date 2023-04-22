@@ -8,12 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Tất Cả Danh Mục</h1>
+            <h1>Tất Cả Bài Viết</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-              <li class="breadcrumb-item active">Tất cả danh mục</li>
+              <li class="breadcrumb-item active">Tất cả bài viết</li>
             </ol>
           </div>
         </div>
@@ -31,8 +31,11 @@
               <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-ban"></i> Xoá</button>
             </div>
             <div class="col-md-6 text-right">
-              <a href="{{route('slider.index')}}" class="btn btn-sm btn-info">
-                <i class="fas fa-sign-out-alt"></i> Quay về danh sách
+              <a href="{{route('post.create')}}" class="btn btn-sm btn-success">
+                <i class="fas fa-plus"></i> Thêm
+              </a>
+              <a href="{{route('post.trash')}}" class="btn btn-sm btn-danger">
+                <i class="fas fa-trash-alt"></i> Thùng rác
               </a>
             </div>
           </div>
@@ -44,7 +47,7 @@
               <tr>
                 <th style="width:20px"; class="text-center">#</th>
                 <th style="width:90px"; class="text-center">Hình</th>
-                <th>Tên danh mục</th>
+                <th>Tên bài viết</th>
                 <th>Slug</th>
                 <th>Ngày đăng</th>
                 <th style="width:200px"; class="text-center">Chức năng</th>
@@ -52,29 +55,40 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($list_slider as $slider)
+              @foreach ($list_post as $post)
               <tr>
                 <td class="text-center"><input type="checkbox"></td>
-                <td><img class="img-fluid" src="{{asset('images/slider/'.$slider->image)}}" alt="{{$slider->image}}"></td>
-                <td>{{$slider->name}}</td>
-                <td>{{$slider->slug}}</td>
-                <td>{{$slider->created_at}}</td>
+                <td><img class="img-fluid" src="{{asset('images/post/'.$post->image)}}" alt="{{$post->image}}"></td>
+                <td>{{$post->name}}</td>
+                <td>{{$post->slug}}</td>
+                <td>{{$post->created_at}}</td>
                 <td class="text-center">
-                  <a href="{{route('slider.restore', ['slider'=>$slider->id])}}" class="btn btn-sm btn-success">
-                    <i class="far fa-window-restore"></i>
+                  @if ($post->status==1)
+                  <a href="{{route('post.status', ['post'=>$post->id])}}" class="btn btn-sm btn-success">
+                    <i class="fas fa-toggle-on"></i>
+                  </a>  
+                  @else
+                  <a href="{{route('post.status', ['post'=>$post->id])}}" class="btn btn-sm btn-danger">
+                    <i class="fas fa-toggle-off"></i>
                   </a>
-                  <a href="{{route('slider.destroy', ['slider'=>$slider->id])}}" class="btn btn-sm btn-danger">
+                  @endif
+                  <a href="{{route('post.edit', ['post'=>$post->id])}}" class="btn btn-sm btn-info">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a href="{{route('post.show', ['post'=>$post->id])}}" class="btn btn-sm btn-success">
+                    <i class="fas fa-eye"></i>
+                  </a>
+                  <a href="{{route('post.delete', ['post'=>$post->id])}}" class="btn btn-sm btn-danger">
                     <i class="fas fa-trash-alt"></i>
                   </a>
                 </td>
-                <td class="text-center">{{$slider->id}}</td>
+                <td class="text-center">{{$post->id}}</td>
               </tr>
               @endforeach
             </tbody>
           </table>
         </div>
         <!-- /.card-body -->
-       
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->

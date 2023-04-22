@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Cập nhật mục sản phẩm')
 @section('content')
-  <form action="{{route('category.update', ['category'=>$category->id]) }}" method="post" enctype="multipart/form-data">
+  <form action="{{route('slider.update', ['slider'=>$slider->id]) }}" method="post" enctype="multipart/form-data">
     @method('PUT')
     @csrf
     <div class="content-wrapper">
@@ -34,7 +34,7 @@
                 <button type="submit" class="btn btn-sm btn-success">
                   <i class="fas fa-save"></i> Lưu[Cập nhật]
                 </button>
-                <a href="{{route('category.index')}}" class="btn btn-sm btn-info">
+                <a href="{{route('slider.index')}}" class="btn btn-sm btn-info">
                   <i class="fas fa-sign-out-alt"></i> Quay về danh sách
                 </a>
               </div>
@@ -46,7 +46,7 @@
               <div class="col-md-9">
                 <div class="mb-3">
                   <label for="name">Tên danh mục</label>
-                  <input type="text" name="name" value="{{old('name',$category->name)}}" id="name" class="form-control" 
+                  <input type="text" name="name" value="{{old('name',$slider->name)}}" id="name" class="form-control" 
                   placeholder="Nhập tên danh mục">
                   @if ($errors->has('name'))
                       <div class="text-danger">
@@ -57,7 +57,7 @@
                 <div class="mb-3">
                   <label for="metakey">Từ khoá</label>
                   <textarea name="metakey" id="metakey" class="form-control" 
-                  placeholder="Từ khoá tìm kiếm">{{old('metakey',$category->metakey)}}</textarea>
+                  placeholder="Từ khoá tìm kiếm">{{old('metakey',$slider->metakey)}}</textarea>
                   @if ($errors->has('metakey'))
                       <div class="text-danger">
                         {{$errors->first('metakey')}}
@@ -67,7 +67,7 @@
                 <div class="mb-3">
                   <label for="metadesc">Mô tả</label>
                   <textarea name="metadesc" id="metadesc" class="form-control" 
-                  placeholder="Nhập mô tả">{{old('metadesc',$category->metadesc)}}</textarea>
+                  placeholder="Nhập mô tả">{{old('metadesc',$slider->metadesc)}}</textarea>
                   @if ($errors->has('metadesc'))
                       <div class="text-danger">
                         {{$errors->first('metadesc')}}

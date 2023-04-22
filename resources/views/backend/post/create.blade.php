@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Thêm danh mục sản phẩm')
 @section('content')
-  <form action="{{route('slider.store')}}" method="post" enctype="multipart/form-data">
+  <form action="{{route('post.store')}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
@@ -9,12 +9,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Thêm Danh Mục</h1>
+              <h1>Thêm Bài Viết</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Bảng điều khiển</a></li>
-                <li class="breadcrumb-item active">Thêm danh mục</li>
+                <li class="breadcrumb-item active">Thêm bài viết</li>
               </ol>
             </div>
           </div>
@@ -33,7 +33,7 @@
                 <button type="submit" class="btn btn-sm btn-success">
                   <i class="fas fa-save"></i> Lưu[Thêm]
                 </button>
-                <a href="{{route('slider.index')}}" class="btn btn-sm btn-info">
+                <a href="{{route('post.index')}}" class="btn btn-sm btn-info">
                   <i class="fas fa-sign-out-alt"></i> Quay về danh sách
                 </a>
               </div>
@@ -44,7 +44,7 @@
             <div class="row">
               <div class="col-md-9">
                 <div class="mb-3">
-                  <label for="name">Tên danh mục</label>
+                  <label for="name">Tên bài viết</label>
                   <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control" 
                   placeholder="Nhập tên danh mục">
                   @if ($errors->has('name'))
@@ -83,10 +83,10 @@
                   </select>
                 </div>
                 <div class="mb-3">
-                  <label for="sort_orders">Vị trí sắp xếp</label>
-                  <select class="form-control" id="sort_orders" name="sort_orders">
+                  <label for="sort_order">Vị trí sắp xếp</label>
+                  <select class="form-control" id="sort_order" name="sort_order">
                     <option value="0">--Vị trí sắp xếp--</option>
-                    {!! $html_sort_orders !!}
+                    {!! $html_sort_order !!}
                   </select>
                 </div>
                 <div class="mb-3">
