@@ -16,6 +16,9 @@ return new class extends Migration
             $table->string('name', 1000);
             $table->string('link', 1000);
             $table->unsignedInteger('table_id');
+            $table->string('position', 100);
+            $table->id('parent_id');
+            $table->id('sort_order');
             $table->string('type', 100);
             $table->unsignedInteger('status');
             $table->timestamps();

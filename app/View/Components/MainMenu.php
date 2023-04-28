@@ -17,7 +17,7 @@ class MainMenu extends Component
 
     public function render(): View|Closure|string
     {
-        $list_menu = Menu::all();
+        $list_menu = Menu::where([['position','=','mainmenu'],['status','=',1]])->get();
         return view('components.main-menu',compact( 'list_menu'));
     }
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Category;
+use App\Models\Brand;
+use App\Models\Topic;
+use App\Models\Post;
 use App\Models\Menu;
 use App\Models\Link;
 use Illuminate\Support\Str;
@@ -17,8 +21,12 @@ class MenuController extends Controller
 
     public function index()
     {
+        $list_category = Category::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
+        $list_brand = Brand::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
+        $list_topic = Topic::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
+        $list_page = Post::where([['status', '!=', 0], ['type', '=', 'page']])->orderBy('created_at', 'desc')->get();
         $list_menu = Menu::where('status', '!=', 0)->orderBy('created_at', 'desc')->get();
-        return view('backend.menu.index', compact('list_menu'));
+        return view('backend.menu.index', compact('list_category', 'list_brand', 'list_topic', 'list_page', 'list_menu'));
     }
 
     /**
@@ -39,40 +47,106 @@ class MenuController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(MenuStoreRequest $request)
+    public function store(Request $request)
     {
-        $menu = new Menu; //Tạo mới
-        $menu->name = $request->name;
-        $menu->slug = Str::slug($menu->name = $request->name, '-');
-        $menu->metakey = $request->metakey;
-        $menu->metadesc = $request->metadesc;
-        $menu->parent_id = $request->parent_id;
-        $menu->sort_order = $request->sort_order;
-        $menu->status = $request->status;
-        $menu->created_at = date('Y-m-d H:i:s');
-        $menu->created_by = 1;
-        //upload file 
-        if ($request->has('image')) {
-            $path_dir = "images/menu/";
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = $menu->slug . '.' . $extension;
-            $file->move($path_dir, $filename);
-            $menu->image = $filename;
-        }
-
-        //end upload
-        if ($menu->save()) {
-            $link = new Link();
-            $link->slug = $menu->slug;
-            $link->table_id = $menu->id;
-            $link->type = 'menu';
-            $link->save();
+        if (isset($request->ADDCATEGORY)) {
+            $list_id = $request->checkIdCategory;
+            foreach ($list_id as $id) {
+                $category = Category::find($id);
+                $menu = new Menu();
+                $menu->name = $category->name;
+                $menu->link = $category->slug;
+                $menu->table_id = $id;
+                $menu->parent_id = 0;
+                $menu->sort_order = 1;
+                $menu->type = 'category';
+                $menu->position = $request->position;
+                $menu->status = 2;
+                $menu->created_at = date('Y-m-d H:i:s');
+                $menu->created_by = 1;
+                $menu->save();
+            }
             return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg'
-            => 'Thêm mẫu tin thành công!']);
-        } else {
-            return redirect()->route('menu.index')->with('message', ['type' => 'danger', 'msg'
-            => 'Thêm không thành công!']);
+            => 'Thêm menu thành công!']);
+        }
+        //add brand
+        if (isset($request->ADDBRAND)) {
+            $list_id = $request->checkIdBrand;
+            foreach ($list_id as $id) {
+                $brand = Brand::find($id);
+                $menu = new Menu();
+                $menu->name = $brand->name;
+                $menu->link = $brand->slug;
+                $menu->table_id = $id;
+                $menu->parent_id = 0;
+                $menu->sort_order = 1;
+                $menu->type = 'brand';
+                $menu->position = $request->position;
+                $menu->status = 2;
+                $menu->created_at = date('Y-m-d H:i:s');
+                $menu->created_by = 1;
+                $menu->save();
+            }
+            return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg'
+            => 'Thêm thương hiệu thành công!']);
+        }
+        // add topic
+        if (isset($request->ADDTOPIC)) {
+            $list_id = $request->checkIdTopic;
+            foreach ($list_id as $id) {
+                $topic = Topic::find($id);
+                $menu = new Menu();
+                $menu->name = $topic->name;
+                $menu->link = $topic->slug;
+                $menu->table_id = $id;
+                $menu->parent_id = 0;
+                $menu->sort_order = 1;
+                $menu->type = 'topic';
+                $menu->position = $request->position;
+                $menu->status = 2;
+                $menu->created_at = date('Y-m-d H:i:s');
+                $menu->created_by = 1;
+                $menu->save();
+            }
+            return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg'
+            => 'Thêm chủ đề thành công!']);
+        }
+        // add page
+        if (isset($request->ADDPAGE)) {
+            $list_id = $request->checkIdPage;
+            foreach ($list_id as $id) {
+                $page = Post::find($id);
+                $menu = new Menu();
+                $menu->name = $page->name;
+                $menu->link = $page->slug;
+                $menu->table_id = $id;
+                $menu->parent_id = 0;
+                $menu->sort_order = 1;
+                $menu->type = 'page';
+                $menu->position = $request->position;
+                $menu->status = 2;
+                $menu->created_at = date('Y-m-d H:i:s');
+                $menu->created_by = 1;
+                $menu->save();
+            }
+            return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg'
+            => 'Thêm trang thành công!']);
+        }
+        //custom
+        if (isset($request->ADDCUSTOM)) {
+            $menu = new Menu();
+            $menu->name = $request->name;
+            $menu->link = $request->link;
+            $menu->parent_id = 0;
+            $menu->sort_order = 1;
+            $menu->type = 'custom';
+            $menu->position = $request->position;
+            $menu->status = 2;
+            $menu->created_at = date('Y-m-d H:i:s');
+            $menu->created_by = 1;
+            $menu->save();
+            return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg'
+            => 'Thêm liên kết thành công!']);
         }
     }
 
@@ -100,8 +174,16 @@ class MenuController extends Controller
         $html_parent_id = '';
         $html_sort_order = '';
         foreach ($list_menu as $item) {
-            $html_parent_id .= '<option value="' . $item->id . '">' . $item->name . '</option>';
-            $html_sort_order .= '<option value="' . $item->sort_order . '">Sau: ' . $item->name . '</option>';
+            if ($menu->parent_id == $item->id) {
+                $html_parent_id .= '<option selected value="' . $item->id . '">' . $item->name . '</option>';
+            } else {
+                $html_parent_id .= '<option value="' . $item->id . '">' . $item->name . '</option>';
+            }
+            if ($menu->sort_order == $item->sort_order) {
+                $html_sort_order .= '<option selected value="' . $item->sort_order . '">Sau: ' . $item->name . '</option>';
+            } else {
+                $html_sort_order .= '<option value="' . $item->sort_order . '">Sau: ' . $item->name . '</option>';
+            }
         }
         return view('backend.menu.edit', compact('menu', 'html_parent_id', 'html_sort_order'));
     }
@@ -109,41 +191,20 @@ class MenuController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(MenuUpdateRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
-        $menu = Menu::find($id); //Lấy mẫu tin
+        $menu = Menu::find($id);
         $menu->name = $request->name;
-        $menu->slug = Str::slug($menu->name = $request->name, '-');
-        $menu->metakey = $request->metakey;
-        $menu->metadesc = $request->metadesc;
+        $menu->link = $request->link;
         $menu->parent_id = $request->parent_id;
-        $menu->sort_order = $request->sort_order;
-        $menu->status = $request->status;
+        $menu->sort_order = $request->sort_order +1;
+        //$menu->position = $request->position;
+        $menu->status =  $request->status;
         $menu->updated_at = date('Y-m-d H:i:s');
         $menu->updated_by = 1;
-        //upload file 
-        if ($request->has('image')) {
-            $path_dir = "images/menu/";
-            if (File::Exists(public_path($path_dir . $menu->image))) {
-                File::delete($path_dir . $menu->image);
-            }
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $filename = $menu->slug . '.' . $extension;
-            $file->move($path_dir, $filename);
-            $menu->image = $filename;
-        }
-
-        //end upload
-        if ($menu->save()) {
-            $link = Link::where([['type', '=', 'menu'], ['table_id', '=', $id]])->first();
-            $link->slug = $menu->slug;
-            $link->save();
-            return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg'
-            => 'Thêm mẫu tin thành công!']);
-        }
-        return redirect()->route('menu.index')->with('message', ['type' => 'danger', 'msg'
-        => 'Thêm không thành công!']);
+        $menu->save();
+        return redirect()->route('menu.index')->with('message', ['type' => 'success', 'msg'
+        => 'Thêm liên kết thành công!']);
     }
 
     /**
