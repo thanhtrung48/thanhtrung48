@@ -45,7 +45,7 @@
             <div class="row">
               <div class="col-md-9">
                 <div class="mb-3">
-                  <label for="name">Tên danh mục</label>
+                  <label for="name">Tên thương hiệu</label>
                   <input type="text" name="name" value="{{old('name',$brand->name)}}" id="name" class="form-control" 
                   placeholder="Nhập tên danh mục">
                   @if ($errors->has('name'))

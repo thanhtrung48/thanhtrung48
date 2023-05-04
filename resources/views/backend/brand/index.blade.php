@@ -47,7 +47,7 @@
               <tr>
                 <th style="width:20px"; class="text-center">#</th>
                 <th style="width:90px"; class="text-center">Hình</th>
-                <th>Tên danh mục</th>
+                <th>Tên thương hiệu</th>
                 <th>Slug</th>
                 <th>Ngày đăng</th>
                 <th style="width:200px"; class="text-center">Chức năng</th>
